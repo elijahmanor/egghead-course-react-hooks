@@ -1,0 +1,92 @@
+html {
+  /* https://uigradients.com/#DarkOcean */
+  background: #373b44; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #4286f4,
+    #373b44
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #4286f4,
+    #373b44
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem;
+}
+section input[type="text"] {
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  font-size: 1.75em;
+  padding: 0.25em 0.5em;
+  color: white;
+  border-radius: 0.25em;
+  background: transparent;
+  margin-bottom: 1rem;
+  width: 300px;
+}
+section input[type="checkbox"] {
+  transform: scale(2);
+  margin-bottom: 2rem;
+}
+section ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  width: 333px;
+}
+section li {
+  border: 2px dotted rgba(255, 255, 255, 0.5);
+  padding: 0.1em 0.5em;
+  font-size: 1.75em;
+  margin-bottom: 1rem;
+  line-height: 2.25rem;
+  height: 2.25rem;
+  color: white;
+  position: relative;
+}
+section ul > li:after {
+  position: absolute;
+  right: -1rem;
+  font-size: 1rem;
+  background-color: white;
+  color: black;
+  padding: 0.25rem 0.5rem;
+  line-height: 1rem;
+  border-radius: 0.25rem;
+  top: -0.5rem;
+}
+section ul > li:first-of-type:after {
+  content: "text";
+}
+section ul > li:last-of-type:after {
+  content: "checked";
+}
+
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: rgba(255, 255, 255, 0.5);
+}
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: rgba(255, 255, 255, 0.5);
+}
+:-ms-input-placeholder {
+  /* IE 10+ */
+  color: rgba(255, 255, 255, 0.5);
+}

@@ -53,17 +53,17 @@ const Label = styled("label")`
   }
 `;
 
-export default function Checkbox({ id, label, value, onChange }) {
+export default function Checkbox({ id, label, checked, onChange }) {
   return (
     <Wrapper>
       <Input
         type="checkbox"
         id={id}
         name={id}
-        value={value}
+        checked={checked}
         onChange={onChange}
       />
-      <Label for={id} aria-hidden="true" completed={value}>
+      <Label htmlFor={id} aria-hidden="true" completed={checked}>
         {label}
       </Label>
     </Wrapper>

@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 import styled from "react-emotion";
 import NewTodo from "./NewTodo";
 import TodoItem from "./TodoItem";
+import uniqueId from "lodash.uniqueid";
 
 const Container = styled("div")`
   margin: 3em auto 0 auto;
@@ -116,7 +117,7 @@ export function Playground4() {
   );
 }
 
-export default function Playground5() {
+export function Playground5() {
   const [state, updateState] = useState({ text: "", checked: false });
   const mergeState = partialState =>
     updateState(prevState => ({
@@ -147,7 +148,7 @@ export default function Playground5() {
   );
 }
 
-export function TodoList() {
+export default function TodoList() {
   const [newTodo, updateNewTodo] = useState("");
   const [todos, updateTodos] = useState([]);
   const handleNewSubmit = e => {
@@ -155,7 +156,7 @@ export function TodoList() {
     updateTodos(prevTodos => [
       ...prevTodos,
       {
-        id: prevTodos.length,
+        id: uniqueId(),
         text: newTodo,
         completed: false
       }
@@ -185,6 +186,7 @@ export function TodoList() {
         <List>
           {todos.map(todo => (
             <TodoItem
+              key={todo.id}
               todo={todo}
               onChange={handleCompletedToggle}
               onDelete={handleDelete}

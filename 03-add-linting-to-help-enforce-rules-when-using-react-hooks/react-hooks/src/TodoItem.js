@@ -31,7 +31,7 @@ export default function TodoItem({ todo, onChange, onDelete }) {
       <Checkbox
         id={todo.id}
         label={todo.text}
-        value={todo.completed}
+        checked={todo.completed}
         onChange={onChange.bind(this, todo.id)}
       />
       <Button onClick={onDelete.bind(this, todo.id)}>x</Button>

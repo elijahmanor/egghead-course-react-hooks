@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import styled from "react-emotion";
 import NewTodo from "./NewTodo";
 import TodoItem from "./TodoItem";
+import uniqueId from "lodash.uniqueid";
 
 const Container = styled("div")`
   margin: 3em auto 0 auto;
@@ -46,11 +47,7 @@ export default class TodoList extends Component {
       return {
         todos: [
           ...prevState.todos,
-          {
-            id: prevState.todos.length,
-            text: prevState.newTodo,
-            completed: false
-          }
+          { id: uniqueId(), text: prevState.newTodo, completed: false }
         ],
         newTodo: ""
       };
@@ -85,6 +82,7 @@ export default class TodoList extends Component {
           <List>
             {todos.map(todo => (
               <TodoItem
+                key={todo.id}
                 todo={todo}
                 onChange={this.handleCompletedToggle}
                 onDelete={this.handleDelete}

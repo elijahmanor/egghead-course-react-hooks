@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React from "react";
 import styled from "react-emotion";
 
 const Wrapper = styled("div")`

@@ -1,28 +1,7 @@
-import React, { Component, Fragment } from "react";
-import styled from "react-emotion";
+import React, { Component } from "react";
 import NewTodo from "./NewTodo";
 import TodoItem from "./TodoItem";
-import uniqueId from "lodash.uniqueid";
-
-const Container = styled("div")`
-  margin: 3em auto 0 auto;
-  padding: 0 1em;
-  width: 75%;
-  min-width: 300px;
-  display: flex;
-  flex-direction: column;
-  input[type="text"] {
-    border-radius: ${props =>
-      props.todos.length ? "0.25em 0.25em 0 0" : "0.25em"};
-  }
-`;
-const List = styled("ul")`
-  list-style: none;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  border-top: none;
-  margin: 0;
-  padding-left: 0;
-`;
+import { Container, List } from "./Styled";
 
 export default class TodoList extends Component {
   constructor(props) {
@@ -47,7 +26,7 @@ export default class TodoList extends Component {
       return {
         todos: [
           ...prevState.todos,
-          { id: uniqueId(), text: prevState.newTodo, completed: false }
+          { id: Date.now(), text: prevState.newTodo, completed: false }
         ],
         newTodo: ""
       };

@@ -7,6 +7,10 @@ export default function Playground() {
       ...prevState,
       ...partialState
     }));
+  let iFeelLikeIt = true;
+  if (iFeelLikeIt) {
+    let [feelz, setFeelz] = useState();
+  }
   return (
     <section>
       <input

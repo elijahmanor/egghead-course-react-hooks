@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "react-emotion";
 import NewTodo from "./NewTodo";
 import TodoItem from "./TodoItem";
@@ -23,13 +23,6 @@ const List = styled("ul")`
   margin: 0;
   padding-left: 0;
 `;
-
-/*
- * Add an effect hook to get data from localStorage (show function overload for initial value)
- * Add another effect hook to add keydown window event handler
- * If key is `?` then display About modal
- * Add cleanup function to remove window event handler
- */
 
 // https://thenounproject.com/term/battery/14009/
 const Battery = ({ level, charging }) => {

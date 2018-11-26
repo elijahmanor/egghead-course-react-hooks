@@ -1,40 +1,52 @@
-import React, { Component, Fragment } from "react";
-import styled from "react-emotion";
+import React, { Component } from "react";
 import NewTodo from "./NewTodo";
 import TodoItem from "./TodoItem";
-import uniqueId from "lodash.uniqueid";
-
-const Container = styled("div")`
-  margin: 3em auto 0 auto;
-  padding: 0 1em;
-  width: 75%;
-  min-width: 300px;
-  display: flex;
-  flex-direction: column;
-  input[type="text"] {
-    border-radius: ${props =>
-      props.todos.length ? "0.25em 0.25em 0 0" : "0.25em"};
-  }
-`;
-const List = styled("ul")`
-  list-style: none;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  border-top: none;
-  margin: 0;
-  padding-left: 0;
-`;
+import { Container, List } from "./Styled";
+import About from "./About";
 
 export default class TodoList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       todos: [],
-      newTodo: ""
+      newTodo: "",
+      showAbout: false
     };
     this.handleNewChange = this.handleNewChange.bind(this);
     this.handleNewSubmit = this.handleNewSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleCompletedToggle = this.handleCompletedToggle.bind(this);
+    this.handleKey = this.handleKey.bind(this);
+  }
+  handleKey({ key }) {
+    this.setState(prevState => {
+      return {
+        showAbout:
+          key === "?" ? true : key === "Escape" ? false : prevState.showAbout
+      };
+    });
+  }
+  update(todos) {
+    const inCompleteTodos = todos.reduce(
+      (memo, todo) => (!todo.completed ? memo + 1 : memo),
+      0
+    );
+    document.title = inCompleteTodos ? `Todos (${inCompleteTodos})` : "Todos";
+    window.localStorage.setItem("todos", JSON.stringify(todos));
+  }
+  componentDidMount() {
+    const todos = JSON.parse(window.localStorage.getItem("todos") || "[]");
+    document.addEventListener("keydown", this.handleKey);
+    this.update(todos);
+    this.setState({ todos });
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.todos !== this.state.todos) {
+      this.update(this.state.todos);
+    }
+  }
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.handleKey);
   }
   handleNewChange(e) {
     this.setState({
@@ -47,7 +59,7 @@ export default class TodoList extends Component {
       return {
         todos: [
           ...prevState.todos,
-          { id: uniqueId(), text: prevState.newTodo, completed: false }
+          { id: Date.now(), text: prevState.newTodo, completed: false }
         ],
         newTodo: ""
       };
@@ -70,7 +82,7 @@ export default class TodoList extends Component {
     });
   }
   render() {
-    const { newTodo, todos } = this.state;
+    const { newTodo, todos, showAbout } = this.state;
     return (
       <Container todos={todos}>
         <NewTodo
@@ -90,6 +102,10 @@ export default class TodoList extends Component {
             ))}
           </List>
         )}
+        <About
+          isOpen={showAbout}
+          onClose={() => this.setState({ showAbout: false })}
+        />
       </Container>
     );
   }

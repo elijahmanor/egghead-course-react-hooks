@@ -26,7 +26,6 @@ const Item = styled("li")`
 `;
 
 export default function TodoItem({ todo, onChange, onDelete }) {
-  console.log("TodoItem", todo);
   return (
     <Item key={todo.id}>
       <Checkbox

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Battery from "./Battery";
 
-export function Playground() {
+export default function Playground() {
   const [battery, setBattery] = useState({ level: 0, charging: false });
   const handleChange = ({ target: { level, charging } }) =>
     setBattery({ level, charging });

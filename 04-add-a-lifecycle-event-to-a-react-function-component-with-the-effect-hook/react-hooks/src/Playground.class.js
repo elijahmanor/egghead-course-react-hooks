@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component } from "react";
 import Battery from "./Battery";
 
 export default class Playground extends Component {

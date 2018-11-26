@@ -31,7 +31,6 @@ const Item = styled("li")`
 class TodoItem extends Component {
   render() {
     const { todo, onChange, onDelete } = this.props;
-    console.log("TodoItem", { context: this.context });
     return (
       <Item key={todo.id} theme={this.context}>
         <Checkbox

@@ -37,7 +37,6 @@ const Item = styled("li")`
 class TodoItem1 extends Component {
   render() {
     const { todo, onChange, onDelete } = this.props;
-    console.log("TodoItem", { theme: this.context, ...todo });
     return (
       <Item key={todo.id} theme={this.context}>
         <Checkbox
@@ -58,7 +57,6 @@ TodoItem1.contextType = ThemeContext;
 class TodoItem2 extends PureComponent {
   render() {
     const { todo, onChange, onDelete } = this.props;
-    console.log("TodoItem", { theme: this.context, ...todo });
     return (
       <Item key={todo.id} theme={this.context}>
         <Checkbox
@@ -82,7 +80,6 @@ class TodoItem3 extends Component {
   }
   render() {
     const { todo, onChange, onDelete } = this.props;
-    console.log("TodoItem", { theme: this.context, ...todo });
     return (
       <Item key={todo.id} theme={this.context}>
         <Checkbox
@@ -102,7 +99,6 @@ TodoItem3.contextType = ThemeContext;
 
 function TodoItem4({ todo, onChange, onDelete }) {
   const theme = useContext(ThemeContext);
-  console.log("TodoItem", { theme, ...todo });
   return (
     <Item key={todo.id} theme={theme}>
       <Checkbox
@@ -120,7 +116,6 @@ function TodoItem4({ todo, onChange, onDelete }) {
 
 const TodoItem5 = React.memo(({ todo, onChange, onDelete }) => {
   const theme = useContext(ThemeContext);
-  console.log("TodoItem", { theme, ...todo });
   return (
     <Item key={todo.id} theme={theme}>
       <Checkbox
@@ -139,7 +134,6 @@ const TodoItem5 = React.memo(({ todo, onChange, onDelete }) => {
 const TodoItem6 = React.memo(
   ({ todo, onChange, onDelete }) => {
     const theme = useContext(ThemeContext);
-    console.log("TodoItem", { theme, ...todo });
     return (
       <Item key={todo.id} theme={theme}>
         <Checkbox

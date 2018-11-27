@@ -1,4 +1,3 @@
-// placholder
 import React, { useState, useRef } from "react";
 import NewTodo from "./NewTodo";
 import TodoItem from "./TodoItem";

@@ -1,103 +1,18 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useReducer,
-  useMemo,
-  useContext
-} from "react";
-import styled from "react-emotion";
+import React, { useState } from "react";
 import NewTodo from "./NewTodo";
 import TodoItem from "./TodoItem";
+import { Container, List } from "./Styled";
 import About from "./About";
+import { useTodosWithLocalStorage, useKeyDown } from "./hooks";
 import { useTitle as useDocumentTitle } from "react-use";
-import ThemeContext from "./ThemeContext";
-import styles from "./styles";
-
-const Container = styled("div")`
-  margin: 0 auto;
-  width: 75%;
-  min-width: 300px;
-  display: flex;
-  flex-direction: column;
-  input[type="text"] {
-    border-radius: ${props =>
-      props.todos.length ? "0.25em 0.25em 0 0" : "0.25em"};
-  }
-  & > label {
-    align-self: flex-end;
-    margin-bottom: 10px;
-  }
-`;
-const List = styled("ul")`
-  list-style: none;
-  border: 2px solid ${props => styles[props.theme].list.borderColor};
-  border-top: none;
-  margin: 0;
-  padding-left: 0;
-`;
-
-const useKeyDown = (map, defaultValue) => {
-  let [match, setMatch] = useState(defaultValue);
-  useEffect(() => {
-    const handleKey = ({ key }) => {
-      setMatch(prevMatch =>
-        Object.keys(map).some(k => k === key) ? map[key] : prevMatch
-      );
-    };
-    document.addEventListener("keydown", handleKey);
-    return () => document.removeEventListener("keydown", handleKey);
-  }, []);
-  return [match, setMatch];
-};
 
 const incompleteTodoCount = todos =>
   todos.reduce((memo, todo) => (!todo.completed ? memo + 1 : memo), 0);
 
-const useTodosWithLocalStorage = defaultValue => {
-  const todoId = useRef(0);
-  const initialValue = () => {
-    const valueFromStorage = JSON.parse(
-      window.localStorage.getItem("todos") || JSON.stringify(defaultValue)
-    );
-    todoId.current = valueFromStorage.reduce(
-      (memo, todo) => Math.max(memo, todo.id),
-      0
-    );
-    return valueFromStorage;
-  };
-  const [todos, dispatch] = useReducer((state, action) => {
-    switch (action.type) {
-      case "ADD_TODO":
-        todoId.current += 1;
-        return [
-          ...state,
-          { id: todoId.current, text: action.text, completed: false }
-        ];
-      case "DELETE_TODO":
-        return state.filter(todo => todo.id !== action.id);
-      case "TOGGLE_TODO":
-        return state.map(todo =>
-          todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
-        );
-      default:
-        return state;
-    }
-  }, useMemo(initialValue, []));
-  useEffect(
-    () => {
-      window.localStorage.setItem("todos", JSON.stringify(todos));
-    },
-    [todos]
-  );
-  return [todos, dispatch];
-};
-
-export default function TodoList2() {
+export default function TodoList() {
   const [newTodo, updateNewTodo] = useState("");
   const [todos, dispatch] = useTodosWithLocalStorage([]);
   const inCompleteCount = incompleteTodoCount(todos);
-  const theme = useContext(ThemeContext);
   const title = inCompleteCount ? `Todos (${inCompleteCount})` : "Todos";
   useDocumentTitle(title);
   let [showAbout, setShowAbout] = useKeyDown(
@@ -118,7 +33,7 @@ export default function TodoList2() {
         onChange={e => updateNewTodo(e.target.value)}
       />
       {!!todos.length && (
-        <List theme={theme}>
+        <List theme="dark">
           {todos.map(todo => (
             <TodoItem
               key={todo.id}

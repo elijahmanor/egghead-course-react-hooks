@@ -1,7 +1,8 @@
 import styled from "react-emotion";
+import styles from "./styles";
 
 export const Container = styled("div")`
-  margin: 3em auto 0 auto;
+  margin: 0 auto;
   width: 75%;
   min-width: 300px;
   display: flex;
@@ -14,7 +15,7 @@ export const Container = styled("div")`
 
 export const List = styled("ul")`
   list-style: none;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  border: 2px solid ${props => styles[props.theme].list.borderColor};
   border-top: none;
   margin: 0;
   padding-left: 0;

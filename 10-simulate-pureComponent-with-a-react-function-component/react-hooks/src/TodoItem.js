@@ -1,9 +1,5 @@
 import React, {
-  Component,
-  PureComponent,
-  Fragment,
-  useContext,
-  memo
+  Component
 } from "react";
 import styled from "react-emotion";
 import Checkbox from "./Checkbox";
@@ -34,8 +30,9 @@ const Item = styled("li")`
   }
 `;
 
-class TodoItem1 extends Component {
+class TodoItem extends Component {
   render() {
+    console.log( "TodoItem", this.props );
     const { todo, onChange, onDelete } = this.props;
     return (
       <Item key={todo.id} theme={this.context}>
@@ -52,103 +49,6 @@ class TodoItem1 extends Component {
     );
   }
 }
-TodoItem1.contextType = ThemeContext;
+TodoItem.contextType = ThemeContext;
 
-class TodoItem2 extends PureComponent {
-  render() {
-    const { todo, onChange, onDelete } = this.props;
-    return (
-      <Item key={todo.id} theme={this.context}>
-        <Checkbox
-          id={todo.id}
-          label={todo.text}
-          checked={todo.completed}
-          onChange={onChange.bind(this, todo.id)}
-        />
-        <Button onClick={onDelete.bind(this, todo.id)} theme={this.context}>
-          x
-        </Button>
-      </Item>
-    );
-  }
-}
-TodoItem2.contextType = ThemeContext;
-
-class TodoItem3 extends Component {
-  shouldComponentUpdate(nextProps) {
-    return nextProps.todo !== this.props.todo;
-  }
-  render() {
-    const { todo, onChange, onDelete } = this.props;
-    return (
-      <Item key={todo.id} theme={this.context}>
-        <Checkbox
-          id={todo.id}
-          label={todo.text}
-          checked={todo.completed}
-          onChange={onChange.bind(this, todo.id)}
-        />
-        <Button onClick={onDelete.bind(this, todo.id)} theme={this.context}>
-          x
-        </Button>
-      </Item>
-    );
-  }
-}
-TodoItem3.contextType = ThemeContext;
-
-function TodoItem4({ todo, onChange, onDelete }) {
-  const theme = useContext(ThemeContext);
-  return (
-    <Item key={todo.id} theme={theme}>
-      <Checkbox
-        id={todo.id}
-        label={todo.text}
-        checked={todo.completed}
-        onChange={onChange.bind(this, todo.id)}
-      />
-      <Button onClick={onDelete.bind(this, todo.id)} theme={theme}>
-        x
-      </Button>
-    </Item>
-  );
-}
-
-const TodoItem5 = React.memo(({ todo, onChange, onDelete }) => {
-  const theme = useContext(ThemeContext);
-  return (
-    <Item key={todo.id} theme={theme}>
-      <Checkbox
-        id={todo.id}
-        label={todo.text}
-        checked={todo.completed}
-        onChange={onChange.bind(this, todo.id)}
-      />
-      <Button onClick={onDelete.bind(this, todo.id)} theme={theme}>
-        x
-      </Button>
-    </Item>
-  );
-});
-
-const TodoItem6 = React.memo(
-  ({ todo, onChange, onDelete }) => {
-    const theme = useContext(ThemeContext);
-    return (
-      <Item key={todo.id} theme={theme}>
-        <Checkbox
-          id={todo.id}
-          label={todo.text}
-          checked={todo.completed}
-          onChange={onChange.bind(this, todo.id)}
-        />
-        <Button onClick={onDelete.bind(this, todo.id)} theme={theme}>
-          x
-        </Button>
-      </Item>
-    );
-  },
-  ({ prevTodo }, { nextTodo }) => prevTodo === nextTodo
-);
-
-export default TodoItem2;
+export default TodoItem;

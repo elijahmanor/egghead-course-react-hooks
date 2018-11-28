@@ -48,6 +48,7 @@ export default function TodoItem({ todo, onChange, onDelete }) {
           key={todo.id}
           theme={theme}
           striped={height > 53}
+          animating={!todo.completed}
           ageColors={ageColors}
         >
           <Checkbox

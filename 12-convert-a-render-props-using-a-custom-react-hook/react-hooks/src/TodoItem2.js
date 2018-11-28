@@ -1,4 +1,4 @@
-import React, { Component, useContext, createRef } from "react";
+import React, { useContext, useRef, useState, useEffect } from "react";
 import Checkbox from "./Checkbox";
 import ThemeContext from "./ThemeContext";
 import Color from "color";
@@ -15,55 +15,44 @@ const getColors = (text, theme) => {
   return { color, background };
 };
 
-class Space extends Component {
-  state = { height: 0, width: 0 };
-  wrapperRef = createRef();
-  updateSize = () => {
-    const element = this.wrapperRef.current;
-    this.setState({
-      height: element.clientHeight,
-      width: element.clientWidth
-    });
-  };
-  componentDidMount() {
-    const element = this.wrapperRef.current;
-    this.updateSize();
-    elementResizeEvent(element, this.updateSize);
-  }
-  componentWillUnmount() {
-    elementResizeEvent.unbind(this.wrapperRef.current);
-  }
-  render() {
-    return <div ref={this.wrapperRef}>{this.props.children(this.state)}</div>;
-  }
-}
-
 export default function TodoItem({ todo, onChange, onDelete }) {
   const theme = useContext(ThemeContext);
   const ageColors = getColors(todo.text, theme);
+  const wrapperRef = useRef(null);
+  const [{ height, width }, setSize] = useState({ height: 0, width: 0 });
+  useEffect(() => {
+    const updateSize = () => {
+      const element = wrapperRef.current;
+      setSize({
+        height: element.clientHeight,
+        width: element.clientWidth
+      });
+    };
+    const element = wrapperRef.current;
+    updateSize();
+    elementResizeEvent(element, updateSize);
+    return () => elementResizeEvent.unbind(wrapperRef.current);
+  }, []);
   return (
-    <Space>
-      {({ height, width }) => (
-        <Item
-          key={todo.id}
-          theme={theme}
-          striped={height > 53}
-          ageColors={ageColors}
-        >
-          <Checkbox
-            id={todo.id}
-            label={todo.text}
-            checked={todo.completed}
-            onChange={onChange.bind(this, todo.id)}
-          />
-          <code style={{ flex: "0 0 50px", margin: "0 5px" }}>
-            {width}×{height}
-          </code>
-          <Button onClick={onDelete.bind(this, todo.id)} theme={theme}>
-            x
-          </Button>
-        </Item>
-      )}
-    </Space>
+    <Item
+      key={todo.id}
+      innerRef={wrapperRef}
+      theme={theme}
+      striped={height > 53}
+      ageColors={ageColors}
+    >
+      <Checkbox
+        id={todo.id}
+        label={todo.text}
+        checked={todo.completed}
+        onChange={onChange.bind(this, todo.id)}
+      />
+      <code style={{ flex: "0 0 50px", margin: "0 5px" }}>
+        {width}×{height}
+      </code>
+      <Button onClick={onDelete.bind(this, todo.id)} theme={theme}>
+        x
+      </Button>
+    </Item>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useCallback } from "react";
 import NewTodo from "./NewTodo";
 import TodoItem from "./TodoItem5";
 import { Container, List } from "./Styled";
@@ -27,7 +27,16 @@ export default function TodoList() {
   };
   const theme = useContext(ThemeContext);
 
-  // at end wrap onChange/onDelete with useCallback(....., [])
+  // TODO: at the end... use handleChange/handleDelete with useCallback
+  // and show that TodoItem2 and TodoItem5 work
+  const handleChange = useCallback(
+    id => dispatch({ type: "TOGGLE_TODO", id }),
+    []
+  );
+  const handleDelete = useCallback(
+    id => dispatch({ type: "DELETE_TODO", id }),
+    []
+  );
 
   return (
     <Container todos={todos}>

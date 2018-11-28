@@ -1,6 +1,6 @@
 import React, { useState, useContext, useCallback } from "react";
 import NewTodo from "./NewTodo";
-import TodoItem from "./TodoItem";
+import TodoItem from "./TodoItem1";
 import { Container, List } from "./Styled";
 import About from "./About";
 import { useTodosWithLocalStorage, useKeyDown } from "./hooks";
@@ -40,14 +40,8 @@ export default function TodoList() {
             <TodoItem
               key={todo.id}
               todo={todo}
-              onChange={useCallback(
-                id => dispatch({ type: "TOGGLE_TODO", id }),
-                []
-              )}
-              onDelete={useCallback(
-                id => dispatch({ type: "DELETE_TODO", id }),
-                []
-              )}
+              onChange={id => dispatch({ type: "TOGGLE_TODO", id })}
+              onDelete={id => dispatch({ type: "DELETE_TODO", id })}
             />
           ))}
         </List>

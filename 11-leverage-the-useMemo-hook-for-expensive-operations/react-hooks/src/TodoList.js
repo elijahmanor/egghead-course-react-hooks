@@ -40,14 +40,8 @@ export default function TodoList() {
             <TodoItem
               key={todo.id}
               todo={todo}
-              onChange={useCallback(
-                id => dispatch({ type: "TOGGLE_TODO", id }),
-                []
-              )}
-              onDelete={useCallback(
-                id => dispatch({ type: "DELETE_TODO", id }),
-                []
-              )}
+              onChange={id => dispatch({ type: "TOGGLE_TODO", id })}
+              onDelete={id => dispatch({ type: "DELETE_TODO", id })}
             />
           ))}
         </List>

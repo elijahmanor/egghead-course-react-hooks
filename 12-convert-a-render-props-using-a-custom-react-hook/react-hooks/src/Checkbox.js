@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import styled from "react-emotion";
 import ThemeContext from "./ThemeContext";
 import styles from "./styles";

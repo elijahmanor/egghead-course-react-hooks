@@ -1,10 +1,9 @@
-import React, { Component, useState, useMemo } from "react";
-import TodoList from "./TodoList.func";
+import React, { Component } from "react";
+import TodoList from "./TodoList";
 import Switch from "./Switch";
 import { Helmet } from "react-helmet";
 import ThemeContext from "./ThemeContext";
 import styled from "react-emotion";
-import Color from "color";
 
 const Container = styled("div")`
   margin: 3em auto 1em auto;

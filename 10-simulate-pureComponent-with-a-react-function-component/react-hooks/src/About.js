@@ -29,11 +29,11 @@ export default function TodoItem({ isOpen, onClose }) {
       </header>
       <p>
         Demo for the{" "}
-        <a href="">State and Effects in Function Components with React Hooks</a>{" "}
-        course on <a href="">Egghead.io</a>
+        <a href="https://egghead.io/instructors/elijah-manor" target="_blank" rel="noopener noreferrer">State and Effects in Function Components with React Hooks</a>{" "}
+        course on <a href="https://egghead.io/" target="_blank" rel="noopener noreferrer">Egghead.io</a>
       </p>
       <p>
-        Written by <a href="">Elijah Manor</a> (<a href="">@elijahmanor</a>)
+        Written by <a href="https://elijahmanor.com/" target="_blank" rel="noopener noreferrer">Elijah Manor</a> (<a href="https://twitter.com/elijahmanor" target="_blank" rel="noopener noreferrer">@elijahmanor</a>)
       </p>
     </Dialog>
   );

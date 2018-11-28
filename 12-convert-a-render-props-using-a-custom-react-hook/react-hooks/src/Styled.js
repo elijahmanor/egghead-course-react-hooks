@@ -69,7 +69,6 @@ export const Item = styled("li")`
       transparent 75%,
       transparent
     );
-    z-index: 1;
     background-size: 53px 53px;
     animation: move 2s linear infinite;
     border-top-right-radius: 8px;
@@ -77,7 +76,8 @@ export const Item = styled("li")`
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     overflow: hidden;
-    animation: ${moveAnimation} 2s linear infinite;
+    animation: ${props => (props.animating ? moveAnimation : "none")} 2s linear
+      infinite;
   }
 
   &:last-of-type {

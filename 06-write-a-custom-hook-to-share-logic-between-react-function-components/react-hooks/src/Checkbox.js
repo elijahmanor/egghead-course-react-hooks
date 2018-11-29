@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React from "react";
 import styled from "react-emotion";
 
 const Wrapper = styled("div")`
@@ -17,7 +17,8 @@ const Input = styled("input")`
 const Label = styled("label")`
   display: inline-block;
   padding-left: 1.5em;
-  text-decoration: ${props => (props.completed ? "line-through" : "initial")};
+  text-decoration: ${props =>
+    props.completed ? "line-through" : "initial"};
   color: ${props => (props.completed ? "#ccc" : "white")};
 
   &:before {
@@ -53,7 +54,12 @@ const Label = styled("label")`
   }
 `;
 
-export default function Checkbox({ id, label, checked, onChange }) {
+export default function Checkbox({
+  id,
+  label,
+  checked,
+  onChange
+}) {
   return (
     <Wrapper>
       <Input
@@ -63,7 +69,11 @@ export default function Checkbox({ id, label, checked, onChange }) {
         checked={checked}
         onChange={onChange}
       />
-      <Label htmlFor={id} aria-hidden="true" completed={checked}>
+      <Label
+        htmlFor={id}
+        aria-hidden="true"
+        completed={checked}
+      >
         {label}
       </Label>
     </Wrapper>

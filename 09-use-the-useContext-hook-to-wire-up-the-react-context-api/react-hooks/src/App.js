@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TodoList from "./TodoList.class";
+import TodoList from "./TodoList.class1";
 import Switch from "./Switch";
 import { Helmet } from "react-helmet";
 import ThemeContext from "./ThemeContext";

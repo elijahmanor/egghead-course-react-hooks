@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React from "react";
 import styled from "react-emotion";
 import Checkbox from "./Checkbox";
 
@@ -25,7 +25,11 @@ const Item = styled("li")`
   }
 `;
 
-export default function TodoItem({ todo, onChange, onDelete }) {
+export default function TodoItem({
+  todo,
+  onChange,
+  onDelete
+}) {
   return (
     <Item key={todo.id}>
       <Checkbox
@@ -34,7 +38,9 @@ export default function TodoItem({ todo, onChange, onDelete }) {
         checked={todo.completed}
         onChange={onChange.bind(this, todo.id)}
       />
-      <Button onClick={onDelete.bind(this, todo.id)}>x</Button>
+      <Button onClick={onDelete.bind(this, todo.id)}>
+        x
+      </Button>
     </Item>
   );
 }

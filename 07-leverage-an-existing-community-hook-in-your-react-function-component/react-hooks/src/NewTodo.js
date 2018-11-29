@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React from "react";
 import styled from "react-emotion";
 
 const NEW_TODO_MAX_LENGTH = 42;
@@ -38,7 +38,9 @@ const Form = styled("form")`
     color: ${props => {
       if (props["data-remaining"] === 0) {
         return "white";
-      } else if (props["data-remaining"] <= 25) {
+      } else if (
+        props["data-remaining"] <= NEW_TODO_WARNING_LENGTH
+      ) {
         return "black";
       } else {
         return "rgba(255, 255, 255, 0.75)";
@@ -47,7 +49,9 @@ const Form = styled("form")`
     background-color: ${props => {
       if (props["data-remaining"] === 0) {
         return "#F2545B";
-      } else if (props["data-remaining"] <= 25) {
+      } else if (
+        props["data-remaining"] <= NEW_TODO_WARNING_LENGTH
+      ) {
         return "#FFFDA1";
       } else {
         return "rgba(255, 255, 255, 0.25)";
@@ -61,11 +65,16 @@ const Form = styled("form")`
   }
 `;
 
-export default function NewTodo({ value, onChange, onSubmit }) {
+export default function NewTodo({
+  value,
+  onChange,
+  onSubmit
+}) {
   return (
     <Form
       onSubmit={onSubmit}
-      data-remaining={NEW_TODO_MAX_LENGTH - value.length}>
+      data-remaining={NEW_TODO_MAX_LENGTH - value.length}
+    >
       <Input
         type="text"
         autoFocusx

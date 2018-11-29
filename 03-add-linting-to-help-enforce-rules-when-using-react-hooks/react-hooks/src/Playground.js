@@ -1,35 +1,33 @@
 import React, { useState } from "react";
 
+const randomFunction = () => {
+  const [nope, setNope] = useState("");
+};
+
+const todos = ["code", "watch", "eat", "read"];
 export default function Playground() {
-  const [state, updateState] = useState({ text: "", checked: false });
-  const mergeState = partialState =>
-    updateState(prevState => ({
-      ...prevState,
-      ...partialState
-    }));
-  let iFeelLikeIt = true;
-  if (iFeelLikeIt) {
-    let [feelz, setFeelz] = useState();
+  const [text, setText] = useState("from input");
+  if (new Date().getDay() === 1) {
+    const [special, setSpecial] = useState(false);
   }
+
   return (
     <section>
       <input
         type="text"
-        value={state.text}
-        onChange={e =>
-          mergeState({
-            text: e.target.value
-          })
-        }
-      />
-      <input
-        type="checkbox"
-        checked={state.checked}
-        onChange={() => mergeState({ checked: !state.checked })}
+        value={text}
+        onChange={e => setText(e.target.value)}
       />
       <ul>
-        <li>{state.text}</li>
-        <li>{state.checked.toString()}</li>
+        {todos.map(item => {
+          const [count, setCount] = useState(0);
+          return (
+            <li onClick={() => setCount(count + 1)}>
+              {item}: {count}
+            </li>
+          );
+        })}
+        <li>{text}</li>
       </ul>
     </section>
   );

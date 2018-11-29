@@ -1,27 +1,21 @@
 import React, { useState } from "react";
 
-export default function Playground() {
+export function Playground4() {
+  // BOOM
   const [state, updateState] = useState({ text: "", checked: false });
-  const mergeState = partialState =>
-    updateState(prevState => ({
-      ...prevState,
-      ...partialState
-    }));
+  const handleCheckboxToggle = () =>
+    updateState(prevState => ({ checked: !prevState.checked }));
   return (
     <section>
       <input
         type="text"
         value={state.text}
-        onChange={e =>
-          mergeState({
-            text: e.target.value
-          })
-        }
+        onChange={e => updateState({ text: e.target.value })}
       />
       <input
         type="checkbox"
         checked={state.checked}
-        onChange={() => mergeState({ checked: !state.checked })}
+        onChange={handleCheckboxToggle}
       />
       <ul>
         <li>{state.text}</li>

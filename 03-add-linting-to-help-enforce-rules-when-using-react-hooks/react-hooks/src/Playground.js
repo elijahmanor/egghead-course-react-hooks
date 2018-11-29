@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 
-const randomFunction = () => {
+const dontDoThis = () => {
   const [nope, setNope] = useState("");
 };
 
-const todos = ["code", "watch", "eat", "read"];
+const todos = ["one", "two", "three"];
 export default function Playground() {
-  const [text, setText] = useState("from input");
+  const [text, setText] = useState("");
   if (new Date().getDay() === 1) {
     const [special, setSpecial] = useState(false);
   }
-
   return (
     <section>
       <input

@@ -1,11 +1,10 @@
-import React, { useState, useContext, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import NewTodo from "./NewTodo";
 import TodoItem from "./TodoItem";
 import { Container, List } from "./Styled";
 import About from "./About";
 import { useTodosWithLocalStorage, useKeyDown } from "./hooks";
 import { useTitle as useDocumentTitle } from "react-use";
-import ThemeContext from "./ThemeContext";
 
 const incompleteTodoCount = todos =>
   todos.reduce((memo, todo) => (!todo.completed ? memo + 1 : memo), 0);
@@ -25,7 +24,19 @@ export default function TodoList() {
     dispatch({ type: "ADD_TODO", text: newTodo });
     updateNewTodo("");
   };
-  const theme = useContext(ThemeContext);
+
+  const handleChange = useCallback(
+    id => dispatch({ type: "TOGGLE_TODO", id }),
+    []
+  );
+  const handleDelete = useCallback(
+    id =>
+      dispatch({
+        type: "DELETE_TODO",
+        id
+      }),
+    []
+  );
 
   return (
     <Container todos={todos}>
@@ -35,13 +46,13 @@ export default function TodoList() {
         onChange={e => updateNewTodo(e.target.value)}
       />
       {!!todos.length && (
-        <List theme={theme}>
+        <List theme="dark">
           {todos.map(todo => (
             <TodoItem
               key={todo.id}
               todo={todo}
-              onChange={id => dispatch({ type: "TOGGLE_TODO", id })}
-              onDelete={id => dispatch({ type: "DELETE_TODO", id })}
+              onChange={handleChange}
+              onDelete={handleDelete}
             />
           ))}
         </List>

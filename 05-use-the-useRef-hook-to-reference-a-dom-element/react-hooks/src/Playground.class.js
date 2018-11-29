@@ -8,7 +8,8 @@ const styles = {
     color: "white",
     borderRadius: "0.25em",
     background: "transparent",
-    transition: "all 0.1s"
+    transition: "all 0.1s",
+    width: "200px"
   },
   button: {
     fontWeight: "400",

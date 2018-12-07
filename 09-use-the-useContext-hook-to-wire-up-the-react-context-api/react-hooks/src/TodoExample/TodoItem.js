@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "react-emotion";
 import Checkbox from "./Checkbox";
-import ThemeContext from "./ThemeContext";
+import ThemeContext from "../Theme/ThemeContext";
 import styles from "./styles";
 
 const Button = styled("button")`

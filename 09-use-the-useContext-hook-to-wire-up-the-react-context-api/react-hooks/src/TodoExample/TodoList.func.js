@@ -5,7 +5,7 @@ import { Container, List } from "./Styled";
 import About from "./About";
 import { useTodosWithLocalStorage, useKeyDown } from "./hooks";
 import { useTitle as useDocumentTitle } from "react-use";
-import ThemeContext from "./ThemeContext";
+import ThemeContext from "../Theme/ThemeContext";
 
 const incompleteTodoCount = todos =>
   todos.reduce((memo, todo) => (!todo.completed ? memo + 1 : memo), 0);

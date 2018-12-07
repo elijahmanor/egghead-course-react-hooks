@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import TodoList from "./TodoList";
-import Switch from "./Switch";
+import TodoList from "./TodoExample/TodoList";
+import Switch from "./Theme/Switch";
 import { Helmet } from "react-helmet";
-import ThemeContext from "./ThemeContext";
+import ThemeContext from "./Theme/ThemeContext";
 import styled from "react-emotion";
 
 const Container = styled("div")`

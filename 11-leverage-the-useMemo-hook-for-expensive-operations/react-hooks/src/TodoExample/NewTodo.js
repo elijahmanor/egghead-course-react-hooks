@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "react-emotion";
-import ThemeContext from "./ThemeContext";
+import ThemeContext from "../Theme/ThemeContext";
 import styles from "./styles";
 
 const NEW_TODO_MAX_LENGTH = 42;

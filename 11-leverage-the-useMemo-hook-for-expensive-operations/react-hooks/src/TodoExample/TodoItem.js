@@ -1,6 +1,6 @@
 import React, { useContext, memo, useMemo } from "react";
 import Checkbox from "./Checkbox";
-import ThemeContext from "./ThemeContext";
+import ThemeContext from "../Theme/ThemeContext";
 import { Item, Button } from "./Styled";
 import Color from "color";
 import styles from "./styles";

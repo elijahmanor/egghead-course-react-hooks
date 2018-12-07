@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import styled from "react-emotion";
-import ThemeContext from "./ThemeContext";
+import ThemeContext from "../Theme/ThemeContext";
 import styles from "./styles";
 
 const Wrapper = styled("div")`
   position: relative;
+  flex-grow: 1;
 `;
 const Input = styled("input")`
   border: 0;

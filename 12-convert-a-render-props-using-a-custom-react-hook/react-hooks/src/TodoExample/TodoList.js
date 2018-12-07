@@ -1,11 +1,11 @@
-import React, { useState, useContext, useCallback } from "react";
+import React, { useState, useContext } from "react";
 import NewTodo from "./NewTodo";
-import TodoItem from "./TodoItem5";
+import TodoItem from "./TodoItem3";
 import { Container, List } from "./Styled";
 import About from "./About";
 import { useTodosWithLocalStorage, useKeyDown } from "./hooks";
 import { useTitle as useDocumentTitle } from "react-use";
-import ThemeContext from "./ThemeContext";
+import ThemeContext from "../Theme/ThemeContext";
 
 const incompleteTodoCount = todos =>
   todos.reduce((memo, todo) => (!todo.completed ? memo + 1 : memo), 0);
@@ -26,17 +26,6 @@ export default function TodoList() {
     updateNewTodo("");
   };
   const theme = useContext(ThemeContext);
-
-  // TODO: at the end... use handleChange/handleDelete with useCallback
-  // and show that TodoItem2 and TodoItem5 work
-  const handleChange = useCallback(
-    id => dispatch({ type: "TOGGLE_TODO", id }),
-    []
-  );
-  const handleDelete = useCallback(
-    id => dispatch({ type: "DELETE_TODO", id }),
-    []
-  );
 
   return (
     <Container todos={todos}>

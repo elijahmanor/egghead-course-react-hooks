@@ -1,5 +1,5 @@
 import React from "react";
-import Playground from "./Playground";
-// import TodoList from "./TodoList.func";
+import Playground from "./SimpleExample/Playground";
+import TodoList from "./TodoExample/TodoList.func";
 
-export default () => <Playground />;
+export default () => <TodoList />;

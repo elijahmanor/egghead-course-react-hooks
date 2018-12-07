@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Checkbox from "./Checkbox";
-import ThemeContext from "./ThemeContext";
+import ThemeContext from "../Theme/ThemeContext";
 import { Button, Item } from "./Styled";
 
 export default function TodoItem4({ todo, onChange, onDelete }) {

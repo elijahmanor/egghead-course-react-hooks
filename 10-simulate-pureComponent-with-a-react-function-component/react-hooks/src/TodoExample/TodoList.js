@@ -1,6 +1,6 @@
 import React, { useState, useContext, useCallback } from "react";
 import NewTodo from "./NewTodo";
-import TodoItem from "./TodoItem6";
+import TodoItem from "./TodoItem5";
 import { Container, List } from "./Styled";
 import About from "./About";
 import { useTodosWithLocalStorage, useKeyDown } from "./hooks";

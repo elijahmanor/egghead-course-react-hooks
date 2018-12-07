@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import NewTodo from "./Todos/NewTodo";
-import TodoItem from "./Todos/TodoItem";
+import NewTodo from "./NewTodo";
+import TodoItem from "./TodoItem";
 import { Container, List } from "./Styled";
 
 export default function TodoList() {

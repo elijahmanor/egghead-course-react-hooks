@@ -1,5 +1,5 @@
 {
-  "name": "react-hooks",
+  "name": "11-leverage-the-useMemo-hook-for-expensive-operations",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

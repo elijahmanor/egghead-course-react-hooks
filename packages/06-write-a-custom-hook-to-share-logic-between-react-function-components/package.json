@@ -1,5 +1,5 @@
 {
-  "name": "react-hooks",
+  "name": "06-write-a-custom-hook-to-share-logic-between-react-function-components",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

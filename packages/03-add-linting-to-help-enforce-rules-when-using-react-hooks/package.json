@@ -1,5 +1,5 @@
 {
-  "name": "react-hooks",
+  "name": "03-add-linting-to-help-enforce-rules-when-using-react-hooks",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

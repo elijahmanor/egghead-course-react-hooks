@@ -1,5 +1,5 @@
 {
-  "name": "react-hooks",
+  "name": "05-use-the-useRef-hook-to-reference-a-dom-element",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

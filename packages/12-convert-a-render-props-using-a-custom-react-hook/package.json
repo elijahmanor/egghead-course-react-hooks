@@ -1,5 +1,5 @@
 {
-  "name": "react-hooks",
+  "name": "12-convert-a-render-props-using-a-custom-react-hook",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

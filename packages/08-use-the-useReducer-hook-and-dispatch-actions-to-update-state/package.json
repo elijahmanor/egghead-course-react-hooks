@@ -1,5 +1,5 @@
 {
-  "name": "react-hooks",
+  "name": "08-use-the-useReducer-hook-and-dispatch-actions-to-update-state",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

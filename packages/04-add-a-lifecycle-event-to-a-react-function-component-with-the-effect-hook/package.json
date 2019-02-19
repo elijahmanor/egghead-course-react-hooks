@@ -1,5 +1,5 @@
 {
-  "name": "react-hooks",
+  "name": "04-add-a-lifecycle-event-to-a-react-function-component-with-the-effect-hook",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

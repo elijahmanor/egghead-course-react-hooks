@@ -12,11 +12,11 @@
     "emotion": "^9.2.12",
     "lodash.uniqueid": "^4.0.1",
     "randomcolor": "^0.5.3",
-    "react": "^16.7.0-alpha.2",
-    "react-dom": "^16.7.0-alpha.2",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
     "react-emotion": "^9.2.12",
     "react-helmet": "^5.2.0",
-    "react-scripts": "2.1.1",
+    "react-scripts": "2.1.5",
     "react-use": "^4.10.0"
   },
   "scripts": {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styled from "react-emotion";
+import styled from "@emotion/styled";
 import Checkbox from "./Checkbox";
 import ThemeContext from "../Theme/ThemeContext";
 import styles from "./styles";

@@ -3,7 +3,7 @@ import TodoList from "./TodoExample/TodoList";
 import Switch from "./Theme/Switch";
 import ThemeContext from "./Theme/ThemeContext";
 import { Helmet } from "react-helmet";
-import styled from "react-emotion";
+import styled from "@emotion/styled";
 
 const Container = styled("div")`
   margin: 3em auto 1em auto;

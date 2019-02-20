@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "react-emotion";
+import styled from '@emotion/styled'
 import Checkbox from "./Checkbox";
 
 const Button = styled("button")`

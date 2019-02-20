@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/core": "^10.0.7",
+    "@emotion/styled": "^10.0.7",
     "emotion": "^10.0.7",
     "lodash.uniqueid": "^4.0.1",
     "react": "~16.8.2",

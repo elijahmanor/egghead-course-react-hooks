@@ -1,4 +1,4 @@
-import styled from "react-emotion";
+import styled from "@emotion/styled";
 import styles from "./styles";
 
 export const Container = styled("div")`

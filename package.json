@@ -1,0 +1,15 @@
+{
+  "repository": "git@github.com:eggheadio-projects/egghead-course-react-hooks.git",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "start": "aux() { yarn workspace:log \"$(cd packages && ls -d *\"$1\"* | head -1)\" start; }; aux",
+    "workspace:log": "aux() { echo \"Running $2 in $1.\" && yarn workspace \"$@\"; }; aux",
+    "clean": "rm -rf packages/*/{dist,.cache}",
+    "clean:node_modules": "find . -name node_modules | xargs rm -rf",
+    "latest": "yarn upgrade-interactive --latest && yarn upgrade -L"
+  },
+  "devDependencies": {},
+  "private": true
+}
